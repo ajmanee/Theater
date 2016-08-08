@@ -1,0 +1,53 @@
+/* CSS declarations go here */
+.MainBox {
+
+    width: 300px;
+    border: 25px black;
+    padding: 25px;
+    margin: 25px;
+}
+
+.boxed {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.silver {
+    background: silver;
+    text-align: center;
+}
+
+.blue {
+    background: lightblue;
+    text-align: center;
+}
+
+.wine {
+    background: #ae163e;
+    text-align: center;
+}
+.gold {
+    background: gold;
+    text-align: center;
+}
+
+.theater  {
+    width:300px;
+    height:30px;
+    border:1px ;
+    text-align: center;
+    solid : #000;
+    background: burlywood;
+
+
+}
+
+
+.Main {
+
+    width: 300px;;
+}
+

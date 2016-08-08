@@ -1,0 +1,80 @@
+<head>
+  <title>theater</title>
+</head>
+
+<body>
+  <h1>Welcome to Dream theater!</h1>
+
+
+
+    {{> seatsTemp}}
+
+
+</body>
+
+<template name="seatsTemp">
+
+        {{> vipTemp}}
+        {{> goldTemp}}
+        {{> silverTemp}}
+        {{> normalTemp}}
+
+
+
+
+
+
+</template>
+
+<template name="vipTemp">
+
+        <div class="theater">
+            <p>المسرح</p>
+
+        </div>
+
+
+           {{#each seatList}}
+
+               <div class="boxed wine">
+                  <div class="seatDtls"> {{name}} </div>
+
+               </div>
+           {{/each}}
+
+
+
+
+</template>
+
+<template name="goldTemp">
+
+    {{#each seatList}}
+        <div class="boxed gold">
+            {{name}}
+        </div>
+    {{/each}}
+    <br>
+
+</template>
+<template name="silverTemp">
+
+    {{#each seatList}}
+        <div class="boxed silver">
+            {{name}}
+        </div>
+    {{/each}}
+    <br>
+
+</template>
+
+<template name="normalTemp">
+
+    {{#each seatList}}
+        <div class="boxed blue">
+            {{name}}
+        </div>
+    {{/each}}
+    <br>
+
+</template>
