@@ -1,25 +1,24 @@
 <head>
-  <title>theater</title>
+    <title>theater</title>
 </head>
 
 <body>
-  <h1>Welcome to Dream theater!</h1>
+<h1>Welcome to Dream theater!</h1>
 
 
 
-    {{> seatsTemp}}
-
+{{> seatsTemp}}
+<br>
 
 </body>
 
 <template name="seatsTemp">
 
-        {{> vipTemp}}
-        {{> goldTemp}}
-        {{> silverTemp}}
-        {{> normalTemp}}
 
-
+       {{> vipTemp}}
+       {{> goldTemp}}
+       {{> silverTemp}}
+       {{> normalTemp}}
 
 
 
@@ -28,22 +27,17 @@
 
 <template name="vipTemp">
 
-        <div class="theater">
-            <p>المسرح</p>
+    <div class="theater">
+        <p>المسرح</p>
+
+    </div>
+    {{#each seatList}}
+
+        <div class="boxed wine">
+            <div class="seatDtls seat {{selectedClass}}">{{name}}</div>
 
         </div>
-
-
-           {{#each seatList}}
-
-               <div class="boxed wine">
-                  <div class="seatDtls"> {{name}} </div>
-
-               </div>
-           {{/each}}
-
-
-
+    {{/each}}
 
 </template>
 
@@ -51,7 +45,7 @@
 
     {{#each seatList}}
         <div class="boxed gold">
-            {{name}}
+            <div class="seatDtls seat {{selectedClass}}">{{name}}</div>
         </div>
     {{/each}}
     <br>
@@ -61,7 +55,7 @@
 
     {{#each seatList}}
         <div class="boxed silver">
-            {{name}}
+            <div class="seatDtls seat {{selectedClass}}">{{name}}</div>
         </div>
     {{/each}}
     <br>
@@ -72,9 +66,26 @@
 
     {{#each seatList}}
         <div class="boxed blue">
-            {{name}}
+            <div class="seatDtls seat {{selectedClass}}">{{name}}</div>
         </div>
     {{/each}}
     <br>
+    <form>
+        <br>
+        Name <input type="text" name="nameText">
+
+        <input type="submit" value="ادخل الاسم">
+    </form>
 
 </template>
+
+<template name="home">
+    <p>Home!</p>
+</template>
+
+<template name="about">
+    <p>about</p>
+</template>
+
+
+
