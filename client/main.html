@@ -14,12 +14,10 @@
 <template name="seatsTemp">
 
 
+    <!--to call template-->
     {{> theaterSeatTemp}}
-        <div>
-            {{> formTemp}}
 
-        </div>
-
+    {{> formTemp}}
 
 
 </template>
@@ -30,13 +28,13 @@
         <p>المسرح</p>
 
 
-    {{#each seatList}}
+        {{#each seatList}} <!-- to call all seats from the DB-->
 
-        <div class="boxed wine">
+            <div class="boxed wine"> <!-- to give seats a color -->
 
-            {{> seatTemp}}
-        </div>
-    {{/each}}
+                {{> seatTemp}} <!-- call template -->
+            </div>
+        {{/each}}
     </div>
 
 </template>
@@ -44,7 +42,9 @@
 
 <template name="seatTemp">
 
+    <!-- color the selected seat and call only name from db -->
     <div class="seatDtls  seat {{selectedClass}}">{{name}}</div>
+
 
 
 </template>
@@ -52,6 +52,7 @@
 
 <template name="formTemp">
 
+    <!-- form code -->
     <form name="form">
         <input type="text" name="nameText">
 

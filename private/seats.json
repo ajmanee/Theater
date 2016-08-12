@@ -1,0 +1,23 @@
+// sample data to be insert in the database on the startup
+
+{
+  "seats":
+  [
+    { "_id": "A1", "name": "A1" , "type" : "vip"},
+    { "_id": "A2", "name": "A2" , "type" : "vip"},
+    { "_id": "A3", "name": "A3" , "type" : "vip"},
+    { "_id": "A4", "name": "A4" , "type" : "vip"},
+    { "_id": "B1", "name": "B1" , "type" : "gold"},
+    { "_id": "B2", "name": "B2" , "type" : "gold"},
+    { "_id": "B3", "name": "B3" , "type" : "gold"},
+    { "_id": "B4", "name": "B4" , "type" : "gold"},
+    { "_id": "C1", "name": "C1" , "type" : "silver"},
+    { "_id": "C2", "name": "C2" , "type" : "silver"},
+    { "_id": "C3", "name": "C3" , "type" : "silver"},
+    { "_id": "C4", "name": "C4" , "type" : "silver"},
+    { "_id": "D1", "name": "D1" , "type" : "normal"},
+    { "_id": "D2", "name": "D2" , "type" : "normal"},
+    { "_id": "D3", "name": "D3" , "type" : "normal"},
+    { "_id": "D4", "name": "D4" , "type" : "normal"}
+  ]
+}
