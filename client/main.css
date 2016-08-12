@@ -54,3 +54,7 @@
 .selected {
     background: papayawhip ;
 }
+
+.formHide {
+    visibility:  hidden;
+}
