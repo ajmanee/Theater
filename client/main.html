@@ -17,7 +17,10 @@
     <!--to call template-->
     {{> theaterSeatTemp}}
 
+    <!--if this is true return form template -->
     {{> formTemp}}
+    <!-- call count template -->
+    {{> resCountTemp}}
 
 
 </template>
@@ -30,9 +33,9 @@
 
         {{#each seatList}} <!-- to call all seats from the DB-->
 
-            <div class="boxed wine"> <!-- to give seats a color -->
+            <div class="boxed wine ">
 
-                {{> seatTemp}} <!-- call template -->
+                {{> seatTemp}}
             </div>
         {{/each}}
     </div>
@@ -43,8 +46,9 @@
 <template name="seatTemp">
 
     <!-- color the selected seat and call only name from db -->
-    <div class="seatDtls  seat {{selectedClass}}">{{name}}</div>
 
+
+    <div class="seatDtls  seat {{selectedClass}} {{reserved}}">{{name}}</div>
 
 
 </template>
@@ -53,13 +57,23 @@
 <template name="formTemp">
 
     <!-- form code -->
+
     <form name="form">
+
         <input type="text" name="nameText">
 
         <input type="submit" value="ادخل الاسم">
 
-
     </form>
 
+
+</template>
+
+
+<template name="resCountTemp">
+
+    <!-- this to disaply all available and reserved seats -->
+
+    <p> الكراسي المحجوزه هي {{reservedSeats}} من اصل{{totalSeats}}  </p>
 
 </template>
