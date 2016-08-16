@@ -5,13 +5,20 @@ Template.theaterSeatTemp.helpers({
     return Seats.find(); // call all seats from the db
   }
 
+});
+
+Template.ReservedByTemp.helpers ({
+  'seatReservedBy': function () {
+    var selctedSeatVar = Session.get('seatId');
+    return Seats.findOne({_id : selctedSeatVar} );
+
+  }
 
 });
 
 
 
 Template.seatTemp.helpers({
-
   'reserved' : function() {
     var isReservedVar = this.reserved;
     //return console.log(isReservedVar)
@@ -32,7 +39,9 @@ Template.seatTemp.helpers({
       return "selected";
     }
 
-  }
+  },
+
+
 
 
 });
@@ -65,9 +74,9 @@ Template.seatsTemp.events({
 
     var selectedSeatIdOutVar = Session.get('seatId'); // this will get whatever value in the sesion
     Seats.update({_id : seatIdVar}, {$set: {lock: true}} ); // on click action on the db
-  }
 
-});
+  }
+  });
 
 
 
@@ -77,8 +86,10 @@ Template.formTemp.events({
   'submit form': function() {
     event.preventDefault();
     var reservedByVar = event.target.nameText.value; // get the name from the form
+    var reservedPhoneVar = event.target.phoneText.value;
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
-    Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true}}); // submit db action
+    Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true, Phone :reservedPhoneVar}}); // submit db action
   }
   });
+
 

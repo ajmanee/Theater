@@ -13,32 +13,40 @@
 
 <template name="seatsTemp">
 
+<div>
+    <div class="theater">
+        <br><br>
+        {{> theaterSeatTemp}}
+    </div>
 
-    <!--to call template-->
-    {{> theaterSeatTemp}}
 
-    <!--if this is true return form template -->
-    {{> formTemp}}
-    <!-- call count template -->
-    {{> resCountTemp}}
+    <div>
+
+        {{> formTemp}}
+    </div>
+   <div>
+       {{> ReservedByTemp}}
+   </div>
+
+    <div>
+        {{> resCountTemp}}
+
+    </div>
+
+
+</div>
 
 
 </template>
 
 <template name="theaterSeatTemp">
 
-    <div class="theater">
-        <p>المسرح</p>
-
-
         {{#each seatList}} <!-- to call all seats from the DB-->
 
             <div class="boxed wine ">
-
-                {{> seatTemp}}
+                 {{> seatTemp}}
             </div>
         {{/each}}
-    </div>
 
 </template>
 
@@ -46,8 +54,6 @@
 <template name="seatTemp">
 
     <!-- color the selected seat and call only name from db -->
-
-
     <div class="seatDtls  seat {{selectedClass}} {{reserved}}">{{name}}</div>
 
 
@@ -56,14 +62,29 @@
 
 <template name="formTemp">
 
-    <!-- form code -->
 
-    <form name="form">
+    <form class="form-inline " name="form">
+        <div class="control-group">
 
-        <input type="text" name="nameText">
-
-        <input type="submit" value="ادخل الاسم">
-
+            <label class="control-label" for="inputEmail">الاسم</label>
+            <div class="controls">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" name="nameText" placeholder="الاسم">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputPassword">رقم الهاتف</label>
+            <div class="controls">
+                <span class="add-on"><i class="icon-signal"></i></span>
+                <input type="text" name="phoneText" placeholder="رقم الهاتف">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <br>
+                <input type="submit" class="btn btn-success" value="حجز">
+            </div>
+        </div>
     </form>
 
 
@@ -77,3 +98,16 @@
     <p> الكراسي المحجوزه هي {{reservedSeats}} من اصل{{totalSeats}}  </p>
 
 </template>
+
+
+<template name="ReservedByTemp">
+
+    {{#if seatReservedBy}}
+        الحجز باسم : {{seatReservedBy.reserverdBy}}
+
+    {{/if}}
+
+</template>
+
+
+
