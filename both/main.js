@@ -18,10 +18,7 @@ Router.route('/login', {
     template: 'loginTemp'
 });
 
-Router.route('/publicPage',{
-    name: 'publicPage',
-    template: 'publicPage'
-});
+
 
 Router.route('/adminPage', {
     name: 'adminPage',
