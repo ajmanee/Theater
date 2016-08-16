@@ -3,50 +3,53 @@
 </head>
 
 <body>
-<h1>Welcome to Dream theater!</h1>
-
-{{> seatsTemp}}
-
-<br>
 
 </body>
 
 <template name="seatsTemp">
 
-<div>
-    <div class="theater">
-        <br><br>
-        {{> theaterSeatTemp}}
+    <div class="center">
+
+
+        <div class="counter">
+            {{> resCountTemp}}
+
+        </div>
+
+        <div>
+
+            {{> formTemp}}
+        </div>
+
+
+        <div class="reservedby">
+            {{> ReservedByTemp}}
+        </div>
+        <div class="right">
+
+
+            {{> theaterSeatTemp}}
+        </div>
+
+
     </div>
-
-
-    <div>
-
-        {{> formTemp}}
-    </div>
-   <div>
-       {{> ReservedByTemp}}
-   </div>
-
-    <div>
-        {{> resCountTemp}}
-
-    </div>
-
-
-</div>
 
 
 </template>
 
 <template name="theaterSeatTemp">
 
+
+    <div>
         {{#each seatList}} <!-- to call all seats from the DB-->
 
             <div class="boxed wine ">
-                 {{> seatTemp}}
+                {{> seatTemp}}
             </div>
+
         {{/each}}
+    </div>
+
 
 </template>
 
@@ -82,7 +85,8 @@
         <div class="control-group">
             <div class="controls">
                 <br>
-                <input type="submit" class="btn btn-success" value="حجز">
+                <input type="submit"  class="btn btn-success" value="حجز">
+                <input type="submit" class="btn btn-danger cancel" value="الغاء">
             </div>
         </div>
     </form>
@@ -102,12 +106,62 @@
 
 <template name="ReservedByTemp">
 
-    {{#if seatReservedBy}}
-        الحجز باسم : {{seatReservedBy.reserverdBy}}
+    <div class="reservedby">
 
-    {{/if}}
+            {{#if seatReservedBy}}
+            <p> <h5>محجوز باسم </h5>{{seatReservedBy.reserverdBy}} </p>
+            <p><h5>رقم الهاتف </h5>{{seatReservedBy.Phone}} </p>
+            {{/if}}
+
+    </div>
+
 
 </template>
 
 
 
+<template name="publicPage">
+    <h4>Please contact 0551111055 for registration</h4>
+        {{> theaterSeatTemp}}
+
+</template>
+
+<template name="adminPage">
+
+
+    {{> seatsTemp}}
+
+</template>
+
+<template name="loginTemp">
+
+
+<h1>plaese login</h1>
+</template>
+
+<template name="home">
+    <h1>يرجي اختيار المسرحية</h1>
+
+    <a href="/publicPage">عرض الكراسي</a>
+    <br>
+    <a href="/adminPage"> حجز الكراسي</a>
+</template>
+
+
+<template name="main">
+
+    {{> navigationTemp}}
+    {{> yield}}
+    <hr />
+    <p>Copyright &copy; Ali Alblooshi, 2016-2017.</p>
+
+
+</template>
+
+
+<template name="navigationTemp">
+    <ul>
+        <li><a href="{{pathFor route='home'}}">الصفحه الرئيسية</a></li>
+        <li><a href="{{pathFor route='login'}}">تسجيل الدخول </a></li>
+    </ul>
+</template>

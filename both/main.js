@@ -3,3 +3,27 @@
  */
 Seats = new Mongo.Collection ('seats'); // Create seats db
 
+Router.configure({
+    layoutTemplate: 'main'
+});
+
+
+Router.route('/', {
+    name: 'home',
+    template: 'home'
+});
+
+Router.route('/login', {
+    name: 'login',
+    template: 'loginTemp'
+});
+
+Router.route('/publicPage',{
+    name: 'publicPage',
+    template: 'publicPage'
+});
+
+Router.route('/adminPage', {
+    name: 'adminPage',
+    template: 'adminPage'
+});

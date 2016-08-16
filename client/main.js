@@ -19,6 +19,8 @@ Template.ReservedByTemp.helpers ({
 
 
 Template.seatTemp.helpers({
+
+  // it will show if this seat is reserved or no
   'reserved' : function() {
     var isReservedVar = this.reserved;
     //return console.log(isReservedVar)
@@ -39,7 +41,7 @@ Template.seatTemp.helpers({
       return "selected";
     }
 
-  },
+  }
 
 
 
@@ -89,7 +91,13 @@ Template.formTemp.events({
     var reservedPhoneVar = event.target.phoneText.value;
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
     Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true, Phone :reservedPhoneVar}}); // submit db action
-  }
+  },
+  'click .cancel' : function () {
+    event.preventDefault();
+    var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
+    //console.log(selectedSeatIdOutVar)
+    Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: null,reserved: false, Phone :null}}); // cancel db action
+  },
   });
 
 

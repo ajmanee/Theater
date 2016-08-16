@@ -45,6 +45,18 @@
 
 }
 
+.counter {
+
+    background: #aaa;
+    color:white;
+}
+
+.reservedby {
+    background: papayawhip;
+    color:black;
+    font-style: oblique;
+
+}
 
 .Main {
 
@@ -55,6 +67,23 @@
     background: papayawhip ;
 }
 
-.formHide {
-    visibility:  hidden;
+.center {
+    margin: auto;
+    width: 80%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+.right {
+    position: absolute;
+    left: 0px;
+    width: 400px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+.formstyle {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
