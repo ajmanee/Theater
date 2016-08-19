@@ -1,4 +1,9 @@
 /* CSS declarations go here */
+.Theme {
+  background-color: white;;
+}
+
+
 .MainBox {
 
     width: 300px;

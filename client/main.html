@@ -135,7 +135,7 @@
       </form></template>
 
 <template name="registerTemp">
-    <h2>Register</h2>
+    <h2>يرجى ادخال البيانات </h2>
     <form class="register">
         <p>Email: <input type="email" name="email"></p>
         <p>Password: <input type="password" name="password"></p>
@@ -149,25 +149,25 @@
 </template>
 
 
-<template name="main">
-
+<template name="main" >
+<div class="Theme">
     {{> navigationTemp}}
     {{> yield}}
     <hr />
     <p>Copyright &copy; Ali Alblooshi, 2016-2017.</p>
-
+</div>
 
 </template>
 
 
 <template name="navigationTemp">
-    <ul>
-        <li><a href="{{pathFor route='home'}}">الصفحه الرئيسية</a></li>
+    <ul class="nav nav-tabs">
+        <li class="{{isActiveRoute class='active' name='home'}}"><a href="{{pathFor route='home'}}">الصفحه الرئيسية</a></li>
         {{#if currentUser}}
-        <li><a href="#" class="logout">تسجيل خروج</a></li>
+        <li ><a href="#" class="logout">تسجيل خروج</a></li>
       {{else}}
-        <li><a href="{{pathFor route='login'}}">تسجيل الدخول </a></li>
-        <li><a href="{{pathFor route='register'}}"> مستخدم جديد</a></li>
+        <li class="{{isActiveRoute class='active' name='login'}}"><a href="{{pathFor route='login'}}">تسجيل الدخول </a></li>
+        <li class="{{isActiveRoute class='active' name='register'}}"><a href="{{pathFor route='register'}}"> مستخدم جديد</a></li>
         {{/if}}
     </ul>
 </template>

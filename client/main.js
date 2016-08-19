@@ -133,14 +133,16 @@ Template.formTemp.events({
     event.preventDefault();
     var reservedByVar = event.target.nameText.value; // get the name from the form
     var reservedPhoneVar = event.target.phoneText.value;
-    var currentUserVar = Meteor.userId();
+    var currentUserVar = Meteor.userId ();
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
+    confirm(selectedSeatIdOutVar+"هل انت متاكد من  الحجز ل ");
     Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true, Phone :reservedPhoneVar , CreatedBy : currentUserVar}}); // submit db action
   },
   'click .cancel' : function () {
     event.preventDefault();
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
     var currentUserVar = Meteor.userId();
+    confirm(selectedSeatIdOutVar+" هل انت متاكد من الغاء الحجز ل ");
     //console.log(selectedSeatIdOutVar)
     Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: null,reserved: false, Phone :null , CanceledBy : currentUserVar}}); // cancel db action
   },

@@ -23,3 +23,4 @@ bootstrap
 session
 iron:router
 accounts-password
+zimme:active-route
