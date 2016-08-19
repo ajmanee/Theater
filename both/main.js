@@ -13,6 +13,11 @@ Router.route('/', {
     template: 'home'
 });
 
+Router.route('/register', {
+  name: 'register',
+template: 'registerTemp'
+});
+
 Router.route('/login', {
     name: 'login',
     template: 'loginTemp'
@@ -24,3 +29,8 @@ Router.route('/adminPage', {
     name: 'adminPage',
     template: 'adminPage'
 });
+
+Router.route('/seats', {
+  name: 'seats',
+  template: 'seatsTemp'
+})
