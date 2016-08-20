@@ -57,7 +57,7 @@
 <template name="seatTemp">
 
     <!-- color the selected seat and call only name from db -->
-    <div class="seatDtls  seat {{selectedClass}} {{reserved}}">{{name}}</div>
+    <div class="seatDtls  seat {{selectedClass}} {{reserved}} ">{{name}}</div>
 
 
 </template>
@@ -85,8 +85,11 @@
         <div class="control-group">
             <div class="controls">
                 <br>
-                <input type="submit"  class="btn btn-success" value="حجز">
-                <input type="submit" class="btn btn-danger cancel" value="الغاء">
+                {{#if reservedbutton}}<!--   to see how its working check formTemp.helpers -->
+                <input type="submit" class="btn btn-danger cancel" value="الغاء" >
+                {{else}}
+                <input type="submit"  class="btn btn-success" value="حجز" >
+                {{/if}}
             </div>
         </div>
     </form>
@@ -164,6 +167,7 @@
     <ul class="nav nav-tabs">
         <li class="{{isActiveRoute class='active' name='home'}}"><a href="{{pathFor route='home'}}">الصفحه الرئيسية</a></li>
         {{#if currentUser}}
+        <li class="{{isActiveRoute class='active' name='seats'}}"><a href="{{pathFor route='seats'}}"> الحجز</a></li>
         <li ><a href="#" class="logout">تسجيل خروج</a></li>
       {{else}}
         <li class="{{isActiveRoute class='active' name='login'}}"><a href="{{pathFor route='login'}}">تسجيل الدخول </a></li>

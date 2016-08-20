@@ -16,7 +16,21 @@ Template.ReservedByTemp.helpers ({
 
 });
 
+Template.formTemp.helpers({
 
+  // it will show if this seat is reserved or no
+  'reservedbutton' : function() {
+    var reservedVar = Seats.findOne(Session.get('seatId'));
+    return reservedVar && reservedVar.reserved;
+    //db.collection.find( {},  {your_key:1, _id:0})
+
+     if (isReservedVar){
+      return "reservedbutton";
+     } else {
+       return "";
+     }
+}
+});
 
 Template.seatTemp.helpers({
 
@@ -77,7 +91,7 @@ Template.registerTemp.events({
         password: password
       }, function (error){
       if(error){
-        console.log(error.reason); // Output error if registration fails
+        alert(error.reason); // Output error if registration fails
     } else {
       Router.go('home');
   }
@@ -101,7 +115,7 @@ Template.loginTemp.events({
         var password = $('[name=password]').val();
         Meteor.loginWithPassword(email, password, function(error){
           if(error){
-             console.log(error.reason);
+             alert(error.reason);
          } else {
              Router.go('seats');
          }
