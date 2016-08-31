@@ -2,8 +2,18 @@
 
 Template.theaterSeatTemp.helpers({
   'seatList': function(){
-    return Seats.find(); // call all seats from the db
+      return Seats.find({type: "vip"},{sort: {name: -1}}); // call all seats from the db
+  },
+  'seatList2': function(){
+    return Seats.find({type: "gold"});
+  },
+  'seatList3': function(){
+    return Seats.find({type: "silver"});
+  },
+  'seatList4': function(){
+    return Seats.find({type: "normal"});
   }
+
 
 });
 
@@ -18,11 +28,11 @@ Template.ReservedByTemp.helpers ({
 
 Template.formTemp.helpers({
 
-  // it will show if this seat is reserved or no
+  // it will show if this seat is reserved or no and if yes it will show in html only
+  // canel button and if not it will show only submit button
   'reservedbutton' : function() {
     var reservedVar = Seats.findOne(Session.get('seatId'));
     return reservedVar && reservedVar.reserved;
-    //db.collection.find( {},  {your_key:1, _id:0})
 
      if (isReservedVar){
       return "reservedbutton";

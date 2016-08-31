@@ -1,14 +1,14 @@
 <head>
-    <title>مسرح الاحلام</title>
+    <title>Theater</title>
 </head>
 
 <body>
+
 
 </body>
 
 <template name="seatsTemp">
 
-    <div class="center">
 
 
         <div class="counter">
@@ -16,48 +16,72 @@
 
         </div>
 
-        <div>
+
 
             {{> formTemp}}
-        </div>
+            <!--{{> ReservedByTemp}}-->
+            <div class="reservedby">
+
+            </div>
 
 
-        <div class="reservedby">
-            {{> ReservedByTemp}}
-        </div>
-        <div class="right">
 
+
+        <div class="AjmTheater">
 
             {{> theaterSeatTemp}}
         </div>
 
 
-    </div>
 
 
 </template>
 
 <template name="theaterSeatTemp">
 
-
-    <div>
-        {{#each seatList}} <!-- to call all seats from the DB-->
-
-            <div class="boxed wine ">
+ <!-- this to call VIP Seats -->
+        {{#each seatList}}
+            <div class="boxed vip">
                 {{> seatTemp}}
             </div>
-
         {{/each}}
-    </div>
 
+  <!-- this to call gold Seats -->
+
+        {{#each seatList2}}
+          <div class="boxed gold ">
+              {{> seatTemp}}
+          </div>
+        {{/each}}
+
+
+  <!-- this to call silver Seats -->
+
+        {{#each seatList3}}
+          <div class="boxed silver ">
+            {{> seatTemp}}
+        </div>
+        {{/each}}
+
+  <!-- this to call normal Seats -->
+
+        {{#each seatList4}}
+          <div class="boxed blue ">
+            {{> seatTemp}}
+          </div>
+        {{/each}}
 
 </template>
 
 
 <template name="seatTemp">
 
-    <!-- color the selected seat and call only name from db -->
-    <div class="seatDtls  seat {{selectedClass}} {{reserved}} ">{{name}}</div>
+    <!--color the selected seat and call only name from db -->
+     <div class="seatDtls  seat {{selectedClass}} {{reserved}} ">{{name}}</div>
+
+
+
+
 
 
 </template>
@@ -65,7 +89,7 @@
 
 <template name="formTemp">
 
-
+<div class="formseat">
     <form class="form-inline " name="form">
         <div class="control-group">
 
@@ -94,6 +118,9 @@
         </div>
     </form>
 
+    {{> ReservedByTemp}}
+
+</div>
 
 </template>
 
@@ -109,14 +136,13 @@
 
 <template name="ReservedByTemp">
 
-    <div class="reservedby">
+    <!--<div class="reservedby">-->
 
             {{#if seatReservedBy}}
-            <p> <h5>محجوز باسم </h5>{{seatReservedBy.reserverdBy}} </p>
-            <p><h5>رقم الهاتف </h5>{{seatReservedBy.Phone}} </p>
+               الاسم : {{seatReservedBy.reserverdBy}} <br>رقم الهاتف : {{seatReservedBy.Phone}}
             {{/if}}
 
-    </div>
+    <!--</div>-->
 
 
 </template>
@@ -130,12 +156,13 @@
 </template>
 
 <template name="loginTemp">
-  <h2>تسجيل دخول</h2>
+  <h2 style="text-align: center">تسجيل دخول</h2>
       <form class="login">
-          <p>Email: <input type="email" name="email"></p>
-          <p>Password: <input type="password" name="password"></p>
-          <p><input type="submit" value="Login"></p>
-      </form></template>
+          <p style="text-align: center">Email: <input type="email" name="email"></p>
+          <p style="text-align: center">Password: <input type="password" name="password"></p>
+          <p style="text-align: center"><input type="submit" value="Login"></p>
+      </form>
+</template>
 
 <template name="registerTemp">
     <h2>يرجى ادخال البيانات </h2>
@@ -148,17 +175,25 @@
 
 <template name="home">
     <h4>Please contact 0501234567 for registration</h4>
-    {{> theaterSeatTemp}}
+
+<br>
+    <div class="AjmTheater">
+
+        {{> theaterSeatTemp}}
+    </div>
+
+
+
 </template>
 
 
 <template name="main" >
-<div class="Theme">
     {{> navigationTemp}}
     {{> yield}}
     <hr />
-    <p>Copyright &copy; Ali Alblooshi, 2016-2017.</p>
-</div>
+    <div class ="footer">
+      <p style="text-align: center">Copyright &copy; Ali Alblooshi, 2016-2017.</p>
+    </div>
 
 </template>
 
@@ -174,4 +209,23 @@
         <li class="{{isActiveRoute class='active' name='register'}}"><a href="{{pathFor route='register'}}"> مستخدم جديد</a></li>
         {{/if}}
     </ul>
+</template>
+
+
+<template name="newSeatTemp">
+
+    <div class="theaterNew">
+        <div class="stage">
+            <h1 class="stage.h1">Please select a seat</h1>
+        </div>
+
+
+
+
+{{> seatTemp}}
+
+
+
+    </div>
+
 </template>

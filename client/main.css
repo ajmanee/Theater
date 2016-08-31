@@ -1,8 +1,24 @@
 /* CSS declarations go here */
 .Theme {
-  background-color: white;;
+  background-color: white;
+
 }
 
+.AjmTheater {
+
+  position: absolute;
+  top: auto;
+  right: 400px;
+  width: 450px;
+  height: 200px;
+  align-items: center;
+    padding: 80px;
+}
+
+.footer {
+  position: absolute;
+    bottom: 0;
+}
 
 .MainBox {
 
@@ -21,22 +37,39 @@
 }
 
 .reserved {
-    background: silver;
+    background: red;
     text-align: center;
 }
 
 .blue {
-    background: lightblue;
+    /*background: lightblue;*/
+    /*text-align: center;*/
+
+    border-color: blue ;
     text-align: center;
+
 }
 
-.wine {
-    background: #ae163e;
+.normal {
+    background: lightblue ;
     text-align: center;
 }
 .gold {
-    background: gold;
+    border-color: gold ;
     text-align: center;
+
+
+}
+
+.silver {
+    border-color: silver ;
+    text-align: center;
+
+}
+.vip {
+    border-color: brown ;
+    text-align: center;
+
 }
 
 .theater  {
@@ -57,9 +90,11 @@
 }
 
 .reservedby {
-    background: papayawhip;
+    background: cadetblue;
     color:black;
     font-style: oblique;
+    width:  400px;
+    position: fixed;
 
 }
 
@@ -69,7 +104,14 @@
 }
 
 .selected {
-    background: papayawhip ;
+
+    background: gray;
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+
+
 }
 
 .center {
@@ -91,4 +133,29 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+
+
+.stage {
+    width: 700px;
+    height: 100px;
+    /*margin-left: 10%;*/
+    margin-right: 70%;
+    background: bisque;
+     border: solid brown;
+    position: absolute;
+    text-align: center;
+
+}
+
+.stage.h1 {
+    width: 40%;
+    margin: 100px auto 35px auto;
+}
+
+
+.formseat {
+
+    text-align: center;
 }
