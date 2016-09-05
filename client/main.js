@@ -1,8 +1,9 @@
 
-
+// Helper Section
+// This is where we got the seats
 Template.theaterSeatTemp.helpers({
   'seatList': function(){
-      return Seats.find({type: "vip"},{sort: {name: -1}}); // call all seats from the db
+      return Seats.find({type: "vip"},{sort: {name: 1}}); // call all seats from the db
   },
   'seatList2': function(){
     return Seats.find({type: "gold"});
@@ -17,19 +18,20 @@ Template.theaterSeatTemp.helpers({
 
 });
 
+
+// This is to show who  booked this seat info
 Template.ReservedByTemp.helpers ({
   'seatReservedBy': function () {
     var selctedSeatVar = Session.get('seatId');
     return Seats.findOne({_id : selctedSeatVar} );
-
   }
-
 });
+
 
 Template.formTemp.helpers({
 
   // it will show if this seat is reserved or no and if yes it will show in html only
-  // canel button and if not it will show only submit button
+  // cancel button and if not it will show only submit button
   'reservedbutton' : function() {
     var reservedVar = Seats.findOne(Session.get('seatId'));
     return reservedVar && reservedVar.reserved;
@@ -145,7 +147,15 @@ Template.seatsTemp.events({
     var selectedSeatIdOutVar = Session.get('seatId'); // this will get whatever value in the sesion
     Seats.update({_id : seatIdVar}, {$set: {lock: true}} ); // on click action on the db
 
-  }
+  },
+    'touchstart .seatDtls': function(){
+        var seatIdVar = this._id;
+        Session.set('seatId',seatIdVar); // this will save seat id var in the session to be saved other place
+
+        var selectedSeatIdOutVar = Session.get('seatId'); // this will get whatever value in the sesion
+        Seats.update({_id : seatIdVar}, {$set: {lock: true}} ); // on click action on the db
+
+    }
   });
 
 
@@ -157,11 +167,19 @@ Template.formTemp.events({
     event.preventDefault();
     var reservedByVar = event.target.nameText.value; // get the name from the form
     var reservedPhoneVar = event.target.phoneText.value;
+    var remarksVar = event.target.remarksText.value;
     var currentUserVar = Meteor.userId ();
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
+    var selectedPaymentVar = Session.get('paymentSelect');
+      console.log(selectedPaymentVar)
     confirm(selectedSeatIdOutVar+"هل انت متاكد من  الحجز ل ");
-    Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true, Phone :reservedPhoneVar , CreatedBy : currentUserVar}}); // submit db action
+    Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: reservedByVar, lock: false, reserved: true, phone :reservedPhoneVar , createdBy : currentUserVar,payment: selectedPaymentVar,remarks: remarksVar }}); // submit db action
   },
+    'change select': function(){
+        event.preventDefault();
+        var paymentVar = event.target.value;
+        Session.set('paymentSelect',paymentVar);
+    },
   'click .cancel' : function () {
     event.preventDefault();
     var selectedSeatIdOutVar = Session.get('seatId'); // from the session get whatever value is saved there
@@ -171,3 +189,4 @@ Template.formTemp.events({
     Seats.update({_id: selectedSeatIdOutVar}, {$set: {reserverdBy: null,reserved: false, Phone :null , CanceledBy : currentUserVar}}); // cancel db action
   },
   });
+
